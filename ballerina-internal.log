@@ -1,0 +1,1 @@
+[2018-08-11 16:58:57,504] WARN  {org.wso2.transport.http.netty.listener.SourceHandler} - text is empty (possibly HTTP/0.9)  
