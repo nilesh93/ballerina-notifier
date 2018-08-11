@@ -19,12 +19,12 @@ websub:WebSubHub webSubHub = startHubandRegisterTopics();
 // which updates will be published
 function startHubandRegisterTopics() returns websub:WebSubHub {
     io:println("Starting up the Ballerina Commit Notifier Service");
-    websub:WebSubHub internalHub = websub:startHub(9191) but {
+    websub:WebSubHub internalHub = websub:startHub(9191,remotePublishingEnabled=true) but {
         websub:HubStartedUpError hubStartedUpErr => hubStartedUpErr.startedUpHub
     };
 
     // TODO: get from config and iterate registration
-    internalHub.registerTopic("http://github.com") but {
+    internalHub.registerTopic("https://github.com") but {
         error e => log:printError("Error registering topic", err = e)
     };
 
@@ -37,5 +37,7 @@ function startHubandRegisterTopics() returns websub:WebSubHub {
 service<http:Service> publishNotifications bind listener {
 // dumb service
 }
+
+
 
 

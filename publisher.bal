@@ -22,19 +22,6 @@ endpoint http:Listener listener {
 }
 service<http:Service> publishNotifications bind listener {
 
-    @http:ResourceConfig {
-        methods: ["GET", "HEAD"],
-        path: "/github"
-    }
-    discoverPlaceOrder(endpoint caller, http:Request req) {
-        io:println("recieved request");
-        http:Response response;
-        response.statusCode = 202;
-        caller->respond(response) but {
-            error e => log:printError("Error responding on ordering", err = e)
-        };
-    }
-
 
     // Resource accepting order placement requests
     @http:ResourceConfig {
@@ -70,9 +57,9 @@ service<http:Service> publishNotifications bind listener {
         };
 
         // Publish updates to the remote hub.
-        io:println("Publishing update to remote Hub:message:"+ js.user_name.toString() + " pushed to repository "+ js.repo_name.toString() + " with the commit message " + js.commit.toString());
-        var publishResponse = websubHubClientEP->publishUpdate("http://github.com", 
-         "Publishing update to remote Hub:message:"+ js.user_name.toString() + " pushed to repository "+ js.repo_name.toString() + " with the commit message " + js.commit.toString());
+        // io:println("Publishing update to remote Hub:message:"+ js.user_name.toString() + " pushed to repository "+ js.repo_name.toString() + " with the commit message " + js.commit.toString());
+        var publishResponse = websubHubClientEP->publishUpdate("https://github.com", 
+          js.user_name.toString() + " pushed to repository "+ js.repo_name.toString() + " with the commit message " + js.commit.toString());
         match (publishResponse) {
             error webSubError => io:println("Error notifying hub: "  + webSubError.message, webSubError);
             () => io:println("Update notification successful!");

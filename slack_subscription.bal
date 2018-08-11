@@ -5,8 +5,15 @@ import ballerina/log;
 import ballerina/mime;
 import ballerina/websub;
 
+@final
+string channel = "C47EAELR1";
+
+@final
+string token = "/T8K4S35KP/BC886G6S2/LCPZPdc0hq9pZ3fsD8ViS4b1";
+
+ 
 endpoint http:Client clientEndpoint {
-    url: "http://localhost:3000"
+    url: "https://hooks.slack.com/services"
 };
 
 // The endpoint to which the subscriber service is bound.
@@ -14,17 +21,13 @@ endpoint websub:Listener websubEP {
     port: 8181
 };
 
-@final
-string channel = "some channl";
 
-@final
-string token = "token";
 
 // Annotations specifying the subscription parameters.
 @websub:SubscriberServiceConfig {
     path: "/websub",
     subscribeOnStartUp: true,
-    topic: "http://github.com",
+    topic: "https://github.com",
     hub: "https://localhost:9191/websub/hub",
     leaseSeconds: 36000,
     secret: "Kslk30SNF2AChs2"
@@ -44,18 +47,16 @@ function slackNotification(string body) {
     log: printInfo("WebSub Notification Received: " + body);
 
     json payload = {
-        "channel": channel,
-        "text": body,
-        "token": token
+        "text": body
     };
 
-    var response = clientEndpoint->post("",payload);
+    var response = clientEndpoint->post(token,payload);
       match response {
         http:Response resp => {
             io:println("POST request:");
-            var msg = resp.getJsonPayload();
+            var msg = resp.getPayloadAsString();
             match msg {
-                json jsonPayload => {
+                string jsonPayload => {
                     io:println(jsonPayload);
                 }
                 error err => {
@@ -66,6 +67,26 @@ function slackNotification(string body) {
         error err => { log:printError(err.message, err = err); }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,1 +1,53 @@
 [2018-08-11 16:58:57,504] WARN  {org.wso2.transport.http.netty.listener.SourceHandler} - text is empty (possibly HTTP/0.9)  
+[2018-08-11 17:56:22,763] WARN  {io.netty.channel.DefaultChannelPipeline} - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception. 
+io.netty.handler.codec.DecoderException: io.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record: 504f5354202f7765627375622f6875623f6875622e6d6f64653d7075626c697368266875622e746f7069633d68747470733a2f2f6769746875622e636f6d20485454502f312e310d0a636f6e74656e742d747970653a20746578742f706c61696e0d0a686f73743a206c6f63616c686f73743a393139310d0a757365722d6167656e743a2062616c6c6572696e612f302e3938312e300d0a636f6e6e656374696f6e3a206b6565702d616c6976650d0a636f6e74656e742d6c656e6774683a2037350d0a0d0a6e696c6573682070757368656420746f207265706f7369746f727920736f6d652f7265706f20776974682074686520636f6d6d6974206d6573736167652073616d706c6520636f6d6d6974
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:459)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:265)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:141)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: io.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record: 504f5354202f7765627375622f6875623f6875622e6d6f64653d7075626c697368266875622e746f7069633d68747470733a2f2f6769746875622e636f6d20485454502f312e310d0a636f6e74656e742d747970653a20746578742f706c61696e0d0a686f73743a206c6f63616c686f73743a393139310d0a757365722d6167656e743a2062616c6c6572696e612f302e3938312e300d0a636f6e6e656374696f6e3a206b6565702d616c6976650d0a636f6e74656e742d6c656e6774683a2037350d0a0d0a6e696c6573682070757368656420746f207265706f7369746f727920736f6d652f7265706f20776974682074686520636f6d6d6974206d6573736167652073616d706c6520636f6d6d6974
+	at io.netty.handler.ssl.SslHandler.decodeJdkCompatible(SslHandler.java:1138)
+	at io.netty.handler.ssl.SslHandler.decode(SslHandler.java:1194)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:489)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:428)
+	... 16 more
+ 
+[2018-08-11 18:45:57,063] WARN  {io.netty.channel.DefaultChannelPipeline} - An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception. 
+io.netty.handler.codec.DecoderException: io.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record: 504f5354202f6e6f74696669636174696f6e732f67697468756220485454502f312e310d0a436f6e74656e742d547970653a206170706c69636174696f6e2f6a736f6e0d0a63616368652d636f6e74726f6c3a206e6f2d63616368650d0a506f73746d616e2d546f6b656e3a2030666461636631622d643739362d346262652d383432342d3361666130643732323165350d0a557365722d4167656e743a20506f73746d616e52756e74696d652f372e312e310d0a4163636570743a202a2f2a0d0a486f73743a2039333462323464622e6e67726f6b2e696f0d0a6163636570742d656e636f64696e673a20677a69702c206465666c6174650d0a636f6e74656e742d6c656e6774683a203132380d0a582d466f727761726465642d466f723a203130332e322e3135302e3230300d0a0d0a7b0a09227265706f7369746f7279223a7b0a09092266756c6c5f6e616d65223a22736f6d652f7265706f220a097d2c0a0922636f6d6d6974223a7b0a09092275736572223a7b0a090909226c6f67696e223a20226e696c657368220a09097d2c0a090922626f6479223a2273616d706c6520636f6d6d69742032220a097d0a7d
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:459)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:265)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:141)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: io.netty.handler.ssl.NotSslRecordException: not an SSL/TLS record: 504f5354202f6e6f74696669636174696f6e732f67697468756220485454502f312e310d0a436f6e74656e742d547970653a206170706c69636174696f6e2f6a736f6e0d0a63616368652d636f6e74726f6c3a206e6f2d63616368650d0a506f73746d616e2d546f6b656e3a2030666461636631622d643739362d346262652d383432342d3361666130643732323165350d0a557365722d4167656e743a20506f73746d616e52756e74696d652f372e312e310d0a4163636570743a202a2f2a0d0a486f73743a2039333462323464622e6e67726f6b2e696f0d0a6163636570742d656e636f64696e673a20677a69702c206465666c6174650d0a636f6e74656e742d6c656e6774683a203132380d0a582d466f727761726465642d466f723a203130332e322e3135302e3230300d0a0d0a7b0a09227265706f7369746f7279223a7b0a09092266756c6c5f6e616d65223a22736f6d652f7265706f220a097d2c0a0922636f6d6d6974223a7b0a09092275736572223a7b0a090909226c6f67696e223a20226e696c657368220a09097d2c0a090922626f6479223a2273616d706c6520636f6d6d69742032220a097d0a7d
+	at io.netty.handler.ssl.SslHandler.decodeJdkCompatible(SslHandler.java:1138)
+	at io.netty.handler.ssl.SslHandler.decode(SslHandler.java:1194)
+	at io.netty.handler.codec.ByteToMessageDecoder.decodeRemovalReentryProtection(ByteToMessageDecoder.java:489)
+	at io.netty.handler.codec.ByteToMessageDecoder.callDecode(ByteToMessageDecoder.java:428)
+	... 16 more
+ 
